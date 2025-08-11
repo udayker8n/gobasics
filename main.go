@@ -5,11 +5,11 @@ import (
 )
 
 func main() {
-	jainIntro := "welcome jain to swish"
-	introTwo := "welcome sanjay to swish"
-	introThree := "welcome pardhu to swish"
+	introOne := "welcome jain to xist"
+	introTwo := "welcome sanjay to xist"
+	introThree := "welcome pardhu to xist"
 
-	finalize := []string{jainIntro, introTwo, introThree}
+	finalize := []string{introOne, introTwo, introThree}
 
 	order()
 	totaluser(finalize)
@@ -22,13 +22,13 @@ func totaluser(finalize []string) {
 }
 
 func order() {
-	var cName = "SWISH"
+	var cName = "JACK DORSEY"
 	var items1 = "samosa"
 	var item2 = "biryani"
 	var item3 = "chicken curry"
 	var item4 = "chocolate cake"
 	var item5 = "ice cream"
-	var contact = "justswish@gmail.com"
+	var contact = "xistapp@gmail.com"
 	fmt.Println("WELCOME TO", cName)
 	fmt.Println("Please enter your name")
 
