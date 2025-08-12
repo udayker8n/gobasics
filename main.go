@@ -7,7 +7,7 @@ import (
 func main() {
 	introOne := "welcome jain to xist"
 	introTwo := "welcome sanjay to xist"
-	introThree := "welcome pardhu to xist"
+	introThree := "welcome vinu to xist"
 
 	finalize := []string{introOne, introTwo, introThree}
 
