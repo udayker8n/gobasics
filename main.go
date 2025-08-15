@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	introOne := "welcome jain to xist"
+	introOne := "welcome ojas to xist"
 	introTwo := "welcome sanjay to xist"
 	introThree := "welcome vinu to xist"
 
