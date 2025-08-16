@@ -19,7 +19,12 @@ func totaluser(finalize []string) {
 	for index, final := range finalize {
 		fmt.Printf("%d. %s \n", index+1, final)
 	}
-}
+//here we can play with structs more and more until we figured it out about structs
+	getOrder:= Order{"JACK DORDEY", 285, "JACK100", "CASH"}
+		fmt.Printf("The order details are %+v", getOrder)
+		fmt.Printf("the coupon id is %v", getOrder.Coupon)
+		fmt.Println(getOrder)
+	}
 
 func order() {
 	var cName = "JACK DORSEY"
@@ -50,5 +55,13 @@ func order() {
 	fmt.Scan(&address)
 	fmt.Printf("Your order for %v has been placed successfully. It will be delivered to %v. Thank you for choosing %v!\n", itemsneed, address, cName)
 	fmt.Println("For any queries, please contact us at", contact)
+
+}
+
+type Order struct{
+	Name string
+	OrderId int
+	Coupon string
+	Payment string
 
 }
