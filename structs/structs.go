@@ -71,6 +71,72 @@ func (ba *Account) Withdraw(amount float64, description string) error {
 func generateTranscationID() string {
     return fmt.Sprintf("TXN-%d", time.Now().UnixNano())
 }
+// Base account information
+type BaseAccount struct {
+    ID       uint64
+    Owner    string
+    Currency string
+    Created  time.Time
+}
+
+func (ba BaseAccount) GetAccountInfo() string {
+    return fmt.Sprintf("Account %d owned by %s in %s", 
+                      ba.ID, ba.Owner, ba.Currency)
+}
+
+// Savings account embeds BaseAccount
+type SavingsAccount struct {
+    BaseAccount              // Embedding - fields and methods are promoted
+    Balance        float64
+    InterestRate   float64
+    MinimumBalance float64
+}
+
+func (sa *SavingsAccount) CalculateInterest() float64 {
+    return sa.Balance * sa.InterestRate / 100
+}
+
+func (sa *SavingsAccount) ApplyMonthlyInterest() {
+    interest := sa.CalculateInterest()
+    sa.Balance += interest
+    fmt.Printf("Applied interest: $%.2f, New balance: $%.2f\n", 
+               interest, sa.Balance)
+}
+
+// Investment account with different behavior
+type InvestmentAccount struct {
+    BaseAccount                // Same embedding
+    Holdings    []StockHolding
+    TotalValue  float64
+    RiskLevel   string
+}
+
+type StockHolding struct {
+    Symbol       string
+    Shares       int
+    Price        float64
+    PurchaseDate time.Time
+}
+
+func (ia *InvestmentAccount) AddHolding(symbol string, shares int, price float64) {
+    holding := StockHolding{
+        Symbol:       symbol,
+        Shares:       shares,
+        Price:        price,
+        PurchaseDate: time.Now(),
+    }
+    ia.Holdings = append(ia.Holdings, holding)
+    ia.updateTotalValue()
+}
+
+func (ia *InvestmentAccount) updateTotalValue() {
+    total := 0.0
+    for _, holding := range ia.Holdings {
+        total += float64(holding.Shares) * holding.Price
+    }
+    ia.TotalValue = total
+}
+
 
 func main() {
     // You can use Account and Transaction here
